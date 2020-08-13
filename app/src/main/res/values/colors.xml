@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#CEFFCB05</color>
+    <color name="colorPrimaryDark">#C89E00</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccentOpp">#000000</color>
+    <color name="colorGrayBackground">#F1F1F1</color>
+    <color name="colorGrayText">#C1AFAEAE</color>
+    <color name="colorGrayDarkerText">#C1858585</color>
+    <color name="colorBlueIcon">#056DBF</color>
+    <color name="colorRedTransctionPoint">#D60303</color>
+    <color name="colorGreenTransctionPoint">#278100</color>
+    <color name="colorGrayBorder">#C1AFAEAE</color>
+</resources>
