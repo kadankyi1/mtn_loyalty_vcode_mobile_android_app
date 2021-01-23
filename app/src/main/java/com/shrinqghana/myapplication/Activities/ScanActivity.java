@@ -8,7 +8,6 @@ import com.shrinqghana.myapplication.R;
 
 public class ScanActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
