@@ -53,6 +53,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         // Inflate layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
+
         mScanOptionConstraintLayout = view.findViewById(R.id.dashboard_fragment_constraintLayout_scanquickoption);
         mTransactionsConstraintLayout = view.findViewById(R.id.dashboard_fragment_constraintLayout_transactions);
         mConvertPointsConstraintLayout = view.findViewById(R.id.dashboard_fragment_constraintLayout_convertpoints);
