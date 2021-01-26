@@ -1,0 +1,10 @@
+int attr ascamera_camera_type 0x7f040001
+int attr ascamera_show_fps 0x7f040002
+int attr asqrcamera_serial_number 0x7f040003
+int drawable ic_launcher 0x7f080001
+int string app_name 0x7f140001
+int[] styleable ASCameraView { 0x7f040001, 0x7f040002 }
+int styleable ASCameraView_ascamera_camera_type 0
+int styleable ASCameraView_ascamera_show_fps 1
+int[] styleable ASQRCameraView { 0x7f040003 }
+int styleable ASQRCameraView_asqrcamera_serial_number 0

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ScanActivity"
+    android:background="@color/colorGrayText">
+
+    <!-- MENU BAR BEGINS HERE -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scan_activity_constraintlayout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/scan_activity_guideline_horizontal_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/scan_activity_title_bar_guideline_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/scan_activity_title_bar_guideline_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.88" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Confirmation"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/scan_activity_title_bar_guideline_vertical_1"
+            app:layout_constraintStart_toEndOf="@+id/scan_activity_title_bar_guideline_vertical_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- MENU BAR ENDS HERE -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/scan_activity_guideline_horizontal_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corners_shape"
+        android:elevation="3dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan_activity_constraintlayout_title_bar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/dashboard_fragment_button_redeem"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/yellow_border_white_background_button"
+            android:text="Redeem"
+            android:textColor="@drawable/yellow_button_pressed_background"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_points" />
+
+        <EditText
+            android:id="@+id/dashboard_fragment_textview_points"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:hint="Enter Points"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:textColor="@color/colorAccentOpp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/dashboard_fragment_textview2_points"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:hint="You get GHc100"
+            android:visibility="invisible"
+            android:textColor="@color/colorAccentOpp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_points" />
+
+
+        <ProgressBar
+            android:id="@+id/buying_progressbar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:indeterminateTint="@color/colorPrimary"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview2_points" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

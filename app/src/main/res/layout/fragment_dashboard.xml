@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     android:background="@color/colorGrayBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.DashboardFragment">
@@ -23,6 +24,78 @@
 
 
         <!-- MENU BAR BEGINS HERE -->
+        <TextView
+            android:id="@+id/yello_text_dashboard_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/aanticorona"
+            android:text="@string/y_ello"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="20sp"
+            android:textStyle="italic|bold"
+            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_2"
+            app:layout_constraintEnd_toStartOf="@+id/username_text_dashboard_textview"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_1" />
+        <!-- MENU BAR ENDS HERE -->
+
+        <TextView
+            android:id="@+id/username_text_dashboard_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="monospace"
+            android:text="Kobina"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/yello_text_dashboard_textview"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_1" />
+
+        <TextView
+            android:id="@+id/dashboard_fragment_textview_promoslabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Promos"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_4" />
+
+        <TextView
+            android:id="@+id/dashboard_fragment_textview_terms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="Terms &amp; Conditions"
+            android:textAlignment="center"
+            android:textColor="@color/colorGrayText"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_5"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <View
+            android:id="@+id/dashboard_fragment_view_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorGrayText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_3" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/dashboard_fragment_constraintlayout_title_bar"
             android:layout_width="match_parent"
@@ -32,20 +105,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/dashboard_fragment_title_bar_guideline_vertical_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/dashboard_fragment_title_bar_guideline_vertical_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.88" />
 
             <ImageView
                 android:layout_width="0dp"
@@ -83,83 +142,32 @@
                 app:layout_constraintStart_toEndOf="@+id/dashboard_fragment_title_bar_guideline_vertical_2"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/dashboard_fragment_title_bar_guideline_vertical_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.88" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/dashboard_fragment_title_bar_guideline_vertical_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!-- MENU BAR ENDS HERE -->
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dashboard_fragment_guideline_horizontal_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dashboard_fragment_guideline_horizontal_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.16" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dashboard_fragment_guideline_horizontal_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dashboard_fragment_guideline_horizontal_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.66" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dashboard_fragment_guideline_horizontal_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
-
-        <TextView
-            android:id="@+id/yello_text_dashboard_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/aanticorona"
-            android:text="@string/y_ello"
-            android:textColor="@color/colorAccentOpp"
-            android:textSize="20sp"
-            android:textStyle="italic|bold"
-            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_2"
-            app:layout_constraintEnd_toStartOf="@+id/username_text_dashboard_textview"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_1" />
-
-        <TextView
-            android:id="@+id/username_text_dashboard_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Kobina"
-            android:fontFamily="monospace"
-            android:textColor="@color/colorAccentOpp"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/yello_text_dashboard_textview"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/points_holder"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
             android:background="@drawable/rounded_corners_shape"
             android:elevation="3dp"
             android:padding="10dp"
             app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_3"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_2"
             app:layout_constraintVertical_bias="0.19">
@@ -196,7 +204,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Last Transaction"
+                android:text="Last Redemption"
+                android:visibility="gone"
                 android:textColor="@color/colorGrayText"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_textview_lasttransactiondate"
@@ -209,12 +218,13 @@
 
             <TextView
                 android:id="@+id/dashboard_fragment_textview_lasttransactiondate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="78dp"
+                android:layout_height="26dp"
                 android:layout_marginEnd="10dp"
                 android:text="18 May 2020"
                 android:textColor="@color/colorGrayDarkerText"
                 android:textSize="13sp"
+                android:visibility="gone"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -246,18 +256,29 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/dashboard_fragment_view_separator2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/colorGrayText"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/vcode_holder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_corners_shape"
+            android:elevation="3dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_2"
+            app:layout_constraintVertical_bias="0.19">
+
+            <ImageView
+                android:id="@+id/vcode_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/none"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -306,7 +327,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Scan"
+                android:text="Redeem Points"
                 android:textAlignment="center"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -333,6 +354,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_corners_slightly"
             android:padding="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_4"
             app:layout_constraintEnd_toStartOf="@+id/dashboard_fragment_constraintLayout_merchants"
             app:layout_constraintStart_toEndOf="@+id/dashboard_fragment_constraintLayout_scanquickoption"
@@ -374,6 +396,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/dashboard_fragment_constraintLayout_merchants"
             android:layout_width="0dp"
@@ -384,6 +407,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_corners_slightly"
             android:padding="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_guideline_horizontal_4"
             app:layout_constraintEnd_toStartOf="@+id/dashboard_fragment_constraintLayout_transactions"
             app:layout_constraintStart_toEndOf="@+id/dashboard_fragment_constraintLayout_convertpoints"
@@ -458,7 +482,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Transactions"
+                android:text="Redemptions"
                 android:textAlignment="center"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -476,19 +500,48 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/dashboard_fragment_textview_promoslabel"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/dashboard_fragment_guideline_horizontal_1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Promos"
-            android:layout_margin="20dp"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorAccentOpp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_4" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/dashboard_fragment_guideline_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/dashboard_fragment_guideline_horizontal_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/dashboard_fragment_guideline_horizontal_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.66" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/dashboard_fragment_guideline_horizontal_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
 
         <com.shrinqghana.myapplication.Views.RoundedCornerImageView
             android:id="@+id/dashboard_fragment_imageview_promo1"
@@ -516,23 +569,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dashboard_fragment_imageview_promo1"
             app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_promoslabel" />
-
-        <TextView
-            android:id="@+id/dashboard_fragment_textview_terms"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:gravity="center"
-            android:text="Terms &amp; Conditions"
-            android:textAlignment="center"
-            android:textColor="@color/colorGrayText"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_5"
-            app:layout_constraintVertical_bias="0.25" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

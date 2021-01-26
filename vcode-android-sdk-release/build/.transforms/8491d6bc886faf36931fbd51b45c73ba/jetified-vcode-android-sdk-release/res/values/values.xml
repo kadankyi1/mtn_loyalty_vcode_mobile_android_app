@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="scanFragmentBackgroundColor">#191C20</color>
+    <color name="vcodeDefaultColor">#FFFFFFFF</color>
+    <color name="vcodeSuccessColor">#FF8543ac</color>
+    <string name="app_name">SDK</string>
+    <string name="camera_permission_required_message">VCode uses your camera to scan VCodes. Select \'OK\', and then grant permission to use this feature</string>
+    <string name="camera_permission_required_title">VCode Requires Camera Access</string>
+</resources>

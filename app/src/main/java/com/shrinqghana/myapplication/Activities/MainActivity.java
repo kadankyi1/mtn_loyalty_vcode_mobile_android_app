@@ -2,16 +2,13 @@ package com.shrinqghana.myapplication.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.shrinqghana.myapplication.Fragments.BuyFragment;
 import com.shrinqghana.myapplication.Fragments.DashboardFragment;
-import com.shrinqghana.myapplication.Fragments.TransactionsFragment;
-import com.shrinqghana.myapplication.Fragments.ScanFragment;
 import com.shrinqghana.myapplication.Inc.Util;
 import com.shrinqghana.myapplication.R;
 
@@ -27,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         bottomNavigation.setSelectedItemId(R.id.navigation_loyalty);
-
-        Util.openFragment(getSupportFragmentManager(),R.id.container, DashboardFragment.newInstance("", ""), "DashboardFragment", 0);
+        Util.open_fragment(getSupportFragmentManager(),R.id.container, DashboardFragment.newInstance("", ""), "DashboardFragment", 0);
 
     }
 
@@ -38,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_loyalty:
-                            Util.openFragment(getSupportFragmentManager(),R.id.container, DashboardFragment.newInstance("", ""), "DashboardFragment", 0);
+                            Util.open_fragment(getSupportFragmentManager(),R.id.container, DashboardFragment.newInstance("", ""), "DashboardFragment", 0);
+                            return true;
+                        case R.id.navigation_buy:
+                            Util.open_fragment(getSupportFragmentManager(),R.id.container, BuyFragment.newInstance("", ""), "BuyFragment", 0);
                             return true;
                     }
                     return false;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ASCamera</string>
+    <declare-styleable name="ASCameraView">
+        <attr format="boolean" name="ascamera_show_fps"/>
+        <attr name="ascamera_camera_type">
+            <flag name="any" value="0x01"/>
+            <flag name="back" value="0x02"/>
+            <flag name="front" value="0x04"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ASQRCameraView">
+        <attr format="string" name="asqrcamera_serial_number"/>
+    </declare-styleable>
+</resources>

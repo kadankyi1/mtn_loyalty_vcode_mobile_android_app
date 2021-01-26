@@ -1,2 +1,2 @@
 rootProject.name='MTN CUSTOMER LOYALTY REWARD'
-include ':app'
+include ':app', ':vcode-android-sdk-release', ':OpenCV-release', ':ASCamera-release'
