@@ -50,7 +50,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         mScanOptionConstraintLayout = view.findViewById(R.id.dashboard_fragment_constraintLayout_scanquickoption);
@@ -62,6 +62,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         mTransactionsConstraintLayout.setOnClickListener(this);
         mConvertPointsConstraintLayout.setOnClickListener(this);
         mFindVendorsConstraintLayout.setOnClickListener(this);
+
 
         return view;
     }
