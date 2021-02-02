@@ -1,0 +1,8 @@
+uk.co.airsource.android.common.ui.cameraview
+attr ascamera_camera_type
+attr ascamera_show_fps
+attr asqrcamera_serial_number
+drawable ic_launcher
+string app_name
+styleable ASCameraView ascamera_camera_type ascamera_show_fps
+styleable ASQRCameraView asqrcamera_serial_number

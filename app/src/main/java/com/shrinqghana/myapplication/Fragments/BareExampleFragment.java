@@ -1,5 +1,6 @@
 package com.shrinqghana.myapplication.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
@@ -17,6 +18,7 @@ import vcode.vstenterprises.sdk.ui.VCodeScanFragment;
 import vcode.vstenterprises.sdk.ui.VCodeScanView;
 import vcode.vstenterprises.sdk.utils.VCodeCameraPermission;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,67 +26,59 @@ import android.view.ViewGroup;
 import com.shrinqghana.myapplication.Inc.Util;
 import com.shrinqghana.myapplication.R;
 
-public class BareExampleFragment extends VCodeScanFragment implements VCodeImageDecoder.VCodeResultListener, VCodeScanView.VCodeScanImageListener,
-        VCodeScanView.VCodeScanFragmentListener {
 
-    /*
-    VCodeImageDecoder.VCodeResultListener vCodeResultListener;
-    VCodeScanImageListener vCodeScanImageListener;
+public class BareExampleFragment extends VCodeScanFragment implements VCodeScanView.VCodeScanFragmentListener
+{
     VCodeScanFragmentListener vCodeScanFragmentListener;
 
-    public void setListener(@Nullable VCodeImageDecoder.VCodeResultListener listener) {
-        this.vCodeResultListener = listener;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            vCodeScanFragmentListener = (VCodeScanFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement VCodeScanFragmentListener");
+        }
     }
 
-    public void setListener2(@Nullable VCodeScanImageListener listener) {
-        this.vCodeScanImageListener = listener;
-    }
-
-    public void setListener3(@Nullable VCodeScanFragmentListener listener) {
-        this.vCodeScanFragmentListener = listener;
-    }
-     */
+    public BareExampleFragment() {}
 
     public static BareExampleFragment newInstance() {
         BareExampleFragment fragment = new BareExampleFragment();
-        //Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Util.show_log("BareExampleFragment", "onCreateView CALLED");
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        this.setListener(this);
+        return view;
+    }
 
-        //setListener(this);
-        return super.onCreateView(inflater, container, savedInstanceState);
+
+    public void onDetach() {
+        super.onDetach();
+        this.vCodeScanFragmentListener = null;
     }
 
     @Override
-    public void gotVCodeResult(byte[] bytes, byte[] bytes1, float[] floats, long l) {
-        Util.show_log("BareExampleFragment", "gotVCodeResult CALLED");
-    }
-
-    @Override
-    public void gotErrorWhileDecoding(Error error) {
-        Util.show_log("BareExampleFragment", "gotErrorWhileDecoding CALLED");
+    public void decodeTaskCompleted(DecodeTask<VCodeDecodeWorker> task) {
+        super.decodeTaskCompleted(task);
+        Log.e("BareFragVcode", "decodeTaskCompleted: ");
+        Log.e("BareFragVcode", "task: " + task.getFrameBuffer().toString());
     }
 
     @Override
     public void onFoundUTI(@NonNull String s, @NonNull RectF rectF) {
-        Util.show_log("BareExampleFragment", "onFoundUTI CALLED");
+        Log.e("BareFragVcode", "onFoundUTI: " + s);
+        vCodeScanFragmentListener.onFoundUTI(s, rectF);
     }
 
-    @Override
-    public void onCompletedScan(@Nullable Error error, @Nullable String s, @Nullable RectF rectF) {
-        Util.show_log("BareExampleFragment", "onCompletedScan CALLED");
-    }
+
 }
+

@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.shrinqghana.myapplication.Fragments.BareExampleFragment;
@@ -17,11 +18,10 @@ import com.shrinqghana.myapplication.R;
 
 import org.opencv.android.OpenCVLoader;
 
-public class ScanActivity extends AppCompatActivity {
-    static {
+import vcode.vstenterprises.sdk.ui.VCodeScanView;
 
-        OpenCVLoader.initDebug();
-    }
+public class ScanActivity extends AppCompatActivity implements VCodeScanView.VCodeScanFragmentListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class ScanActivity extends AppCompatActivity {
 
         Util.open_fragment(getSupportFragmentManager(),R.id.container, BareExampleFragment.newInstance(), "BareExampleFragment", 0);
 
+        /*
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
             @Override
@@ -38,6 +39,8 @@ public class ScanActivity extends AppCompatActivity {
                 Util.open_fragment(getSupportFragmentManager(),R.id.container2, RedemptionFragment.newInstance("", ""), "RedemptionFragment", 3);
             }
         }, 7000);
+
+         */
     }
 
 
@@ -52,4 +55,10 @@ public class ScanActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onFoundUTI(@NonNull String s, @NonNull RectF rectF) {
+        Log.e("ScanActVCODE", "onFoundUTI: " + s);
+        getSupportFragmentManager().popBackStack();
+        Util.open_fragment(getSupportFragmentManager(),R.id.container2, RedemptionFragment.newInstance("", ""), "RedemptionFragment", 3);
+    }
 }

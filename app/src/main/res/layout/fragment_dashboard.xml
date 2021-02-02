@@ -271,13 +271,26 @@
             app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_guideline_horizontal_2"
             app:layout_constraintVertical_bias="0.19">
 
+            <ProgressBar
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:indeterminateTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
             <ImageView
                 android:id="@+id/vcode_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/logo"
                 android:contentDescription="@string/none"
-                />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -315,7 +328,7 @@
                 android:layout_height="0dp"
                 android:contentDescription="@string/none"
                 android:padding="5dp"
-                android:src="@drawable/ic_qr_code"
+                android:src="@drawable/ic_vcode_logo_dark"
                 android:tint="@color/colorBlueIcon"
                 app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_scanquickmenu_guideline_horizontal_1"
                 app:layout_constraintEnd_toEndOf="parent"

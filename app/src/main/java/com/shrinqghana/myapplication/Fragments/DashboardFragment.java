@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.shrinqghana.myapplication.Activities.ScanActivity;
 import com.shrinqghana.myapplication.Activities.TransactionsActivity;
 import com.shrinqghana.myapplication.Inc.Util;
@@ -77,7 +78,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         m_last_redemption_date_textview.setText(Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_CREDENTIALS_USER_LAST_REDEMPTION_DATE));
         m_points_textview.setText(String.valueOf(Util.getSharedPreferenceInt(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_CREDENTIALS_USER_POINTS)));
 
-
+        Glide.with(getActivity().getApplicationContext())
+                .load(Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_CREDENTIALS_USER_VCODE_IMG_LINK))
+                .into(m_vcode_img);
 
         m_redeem_button.setOnClickListener(this);
         mScanOptionConstraintLayout.setOnClickListener(this);
