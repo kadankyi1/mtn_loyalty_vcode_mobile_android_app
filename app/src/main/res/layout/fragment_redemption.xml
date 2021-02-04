@@ -69,32 +69,47 @@
         app:layout_constraintTop_toBottomOf="@+id/scan_activity_constraintlayout_title_bar"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/dashboard_fragment_button_redeem"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="75dp"
-            android:background="@drawable/yellow_border_white_background_button"
-            android:text="Redeem"
-            android:textColor="@drawable/yellow_button_pressed_background"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/shop_icon_imageview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_shop"
+            app:layout_constraintBottom_toTopOf="@+id/dashboard_fragment_textview_points"
+            app:layout_constraintEnd_toStartOf="@+id/shop_name_textview"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_points" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/shop_name_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Merchant Name"
+            android:visibility="invisible"
+            android:textSize="20sp"
+            android:textColor="@color/colorAccentOpp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shop_icon_imageview"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <EditText
             android:id="@+id/dashboard_fragment_textview_points"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:hint="Enter Points"
+            android:visibility="invisible"
+            android:layout_marginTop="10dp"
             android:digits="0123456789"
             android:inputType="number"
             android:textColor="@color/colorAccentOpp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/shop_name_textview" />
 
 
         <TextView
@@ -109,17 +124,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_points" />
 
+        <Button
+            android:id="@+id/dashboard_fragment_button_redeem"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="75dp"
+            android:visibility="invisible"
+            android:background="@drawable/yellow_border_white_background_button"
+            android:text="Redeem"
+            android:textColor="@drawable/yellow_button_pressed_background"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview_points" />
+
 
         <ProgressBar
             android:id="@+id/buying_progressbar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:indeterminateTint="@color/colorPrimary"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_fragment_textview2_points" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

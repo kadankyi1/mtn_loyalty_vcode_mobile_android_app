@@ -32,6 +32,7 @@
                 app:layout_constraintGuide_percent="0.88" />
 
             <ImageView
+                android:id="@+id/back_imageview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:contentDescription="@string/none"

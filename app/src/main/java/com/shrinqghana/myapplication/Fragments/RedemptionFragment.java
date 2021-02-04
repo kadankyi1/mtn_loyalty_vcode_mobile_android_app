@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -39,9 +40,11 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
 
     ProgressBar m_buying_progressbar;
     EditText m_code_edittext;
-    TextView m_amt_textview;
+    TextView m_amt_textview, m_shopname_textview;
+    ImageView m_shopicon_imageview;
     Button reload_button;
     private Thread network_thread = null;
+    private int merchant_id = 0, rate = 0;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -81,6 +84,8 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
         m_code_edittext = view.findViewById(R.id.dashboard_fragment_textview_points);
         m_amt_textview = view.findViewById(R.id.dashboard_fragment_textview2_points);
         reload_button = view.findViewById(R.id.dashboard_fragment_button_redeem);
+        m_shopname_textview = view.findViewById(R.id.shop_name_textview);
+        m_shopicon_imageview = view.findViewById(R.id.shop_icon_imageview);
 
         m_code_edittext.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,7 +99,7 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                 if(charSequence.toString().equalsIgnoreCase("")){
                     m_amt_textview.setVisibility(View.INVISIBLE);
                 } else {
-                    int rate = Util.getSharedPreferenceInt(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_CREDENTIALS_USER_RATE);
+
                     if(rate <= 0){
                         return;
                     }
@@ -119,6 +124,8 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
 
         reload_button.setOnClickListener(this);
 
+        call_merchant_with_vcode(mParam1);
+
         return view;
     }
 
@@ -128,14 +135,27 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
         if(view.getId() == reload_button.getId()){
 
             if(!m_code_edittext.getText().toString().equalsIgnoreCase("")){
-                if(Float.valueOf(m_code_edittext.getText().toString()) > 0) {
+                if(Float.valueOf(m_code_edittext.getText().toString()) > 0 && merchant_id > 0) {
                     network_thread = new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            call_load_airtime_api(m_code_edittext.getText().toString());
+                            call_load_airtime_api(m_code_edittext.getText().toString(), String.valueOf(merchant_id));
                         }
                     });
                     network_thread.start();
+                } else if(merchant_id <= 0){
+                    new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
+                            .setTitle("Alert")
+                            .setMessage("Merchant not found")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                    getActivity().finish();
+                                }
+                            }).show();
                 }
 
             }
@@ -143,13 +163,16 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
     }
 
 
-    private void call_load_airtime_api(final String points){
+    private void call_load_airtime_api(final String points, final String current_merchant_id){
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
                 m_code_edittext.setVisibility(View.INVISIBLE);
                 reload_button.setVisibility(View.INVISIBLE);
+                m_shopicon_imageview.setVisibility(View.INVISIBLE);
+                m_shopname_textview.setVisibility(View.INVISIBLE);
+                m_amt_textview.setVisibility(View.INVISIBLE);
                 m_buying_progressbar.setVisibility(View.VISIBLE);
             }
         });
@@ -170,8 +193,10 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                                             @Override
                                             public void run() {
                                                 m_buying_progressbar.setVisibility(View.INVISIBLE);
-                                                reload_button.setVisibility(View.VISIBLE);
                                                 m_code_edittext.setVisibility(View.VISIBLE);
+                                                reload_button.setVisibility(View.VISIBLE);
+                                                m_shopicon_imageview.setVisibility(View.VISIBLE);
+                                                m_shopname_textview.setVisibility(View.VISIBLE);
                                                 m_code_edittext.setText("");
                                                 new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
                                                         .setTitle("Alert")
@@ -182,6 +207,7 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                                                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 dialog.cancel();
+                                                                getActivity().finish();
                                                             }
                                                         }).show();
                                             }
@@ -192,8 +218,10 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                                             @Override
                                             public void run() {
                                                 m_buying_progressbar.setVisibility(View.INVISIBLE);
-                                                reload_button.setVisibility(View.VISIBLE);
                                                 m_code_edittext.setVisibility(View.VISIBLE);
+                                                reload_button.setVisibility(View.VISIBLE);
+                                                m_shopicon_imageview.setVisibility(View.VISIBLE);
+                                                m_shopname_textview.setVisibility(View.VISIBLE);
                                                 new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
                                                         .setTitle("Alert")
                                                         .setMessage("Airtime reload failed. Try again later")
@@ -213,8 +241,10 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                                         @Override
                                         public void run() {
                                             m_buying_progressbar.setVisibility(View.INVISIBLE);
-                                            reload_button.setVisibility(View.VISIBLE);
                                             m_code_edittext.setVisibility(View.VISIBLE);
+                                            reload_button.setVisibility(View.VISIBLE);
+                                            m_shopicon_imageview.setVisibility(View.VISIBLE);
+                                            m_shopname_textview.setVisibility(View.VISIBLE);
                                             new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
                                                     .setTitle("Alert")
                                                     .setMessage("An unexpected error occured. Try again later")
@@ -265,6 +295,7 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
                     map.put("customer_phone_number", "customer_phone_number");
                     map.put("customer_pin", "1234");
                     map.put("points", points);
+                    map.put("merchant_id", current_merchant_id);
                     //Util.show_log("LoginActivity", "Map: " +  map.toString());
                     return map;
                 }
@@ -281,4 +312,141 @@ public class RedemptionFragment extends Fragment implements  View.OnClickListene
     }
 
 
+
+    private void call_merchant_with_vcode(final String vcode){
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                m_code_edittext.setVisibility(View.INVISIBLE);
+                reload_button.setVisibility(View.INVISIBLE);
+                m_shopicon_imageview.setVisibility(View.INVISIBLE);
+                m_shopname_textview.setVisibility(View.INVISIBLE);
+                m_buying_progressbar.setVisibility(View.VISIBLE);
+            }
+        });
+
+        if(!getActivity().isFinishing() && getActivity().getApplicationContext() != null){
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://104.156.237.47/api/v1/customer/merchant/find/vcode",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Util.show_log("AudiosListAct", "response: " +  response);
+                            if(!getActivity().isFinishing()){
+                                try {
+                                    JSONObject response_json_object = new JSONObject(response);
+
+                                    if(response_json_object.getString("status").equalsIgnoreCase("success")){
+                                        final String this_status = response_json_object.getString("message");
+                                        final String merchant_name = response_json_object.getJSONObject("merchant").getString("merchant_name");
+                                        final int this_merchant_id = response_json_object.getJSONObject("merchant").getInt("merchant_id");
+                                        final int this_merchant_nc_rate = response_json_object.getJSONObject("merchant").getInt("pts_to_1_cedis_nc");
+                                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                m_buying_progressbar.setVisibility(View.INVISIBLE);
+                                                reload_button.setVisibility(View.VISIBLE);
+                                                m_code_edittext.setVisibility(View.VISIBLE);
+                                                m_shopname_textview.setVisibility(View.VISIBLE);
+                                                m_shopicon_imageview.setVisibility(View.VISIBLE);
+                                                m_code_edittext.setText("");
+                                                m_shopname_textview.setText(merchant_name);
+                                                merchant_id = this_merchant_id;
+                                                rate = this_merchant_nc_rate;
+
+                                            }
+                                        });
+                                    } else {
+
+                                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                m_buying_progressbar.setVisibility(View.INVISIBLE);
+                                                reload_button.setVisibility(View.VISIBLE);
+                                                m_code_edittext.setVisibility(View.VISIBLE);
+                                                new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
+                                                        .setTitle("Alert")
+                                                        .setMessage("Merchant not found")
+
+                                                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                                                        // The dialog is automatically dismissed when a dialog button is clicked.
+                                                        .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.cancel();
+                                                                getActivity().finish();
+                                                            }
+                                                        }).show();
+                                            }
+                                        });
+                                    }
+                                } catch (JSONException e) {
+                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            m_buying_progressbar.setVisibility(View.INVISIBLE);
+                                            reload_button.setVisibility(View.VISIBLE);
+                                            m_code_edittext.setVisibility(View.VISIBLE);
+                                            new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
+                                                    .setTitle("Alert")
+                                                    .setMessage("An unexpected error occured. Try again later")
+
+                                                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                                    .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.cancel();
+                                                            getActivity().finish();
+                                                        }
+                                                    }).show();
+                                        }
+                                    });
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    m_buying_progressbar.setVisibility(View.INVISIBLE);
+                                    reload_button.setVisibility(View.VISIBLE);
+                                    m_code_edittext.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.myDialog))
+                                    .setTitle("Alert")
+                                    .setMessage("GPRS/Wi-Fi is disabled. Please enable GPRS/Wi-Fi from device setting to access the application")
+
+                                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                    .setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                            getActivity().finish();
+                                        }
+                                    }).show();
+                        }
+                    }) {
+
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("merchant_vcode", vcode);
+                    //Util.show_log("LoginActivity", "Map: " +  map.toString());
+                    return map;
+                }
+            };
+            stringRequest.setShouldCache(false);
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+            requestQueue.add(stringRequest);
+        }
+    }
 }

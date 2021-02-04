@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="wrap_content"
+    android:minHeight="70dp"
     android:background="@drawable/gray_bottom_border_white_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -22,7 +23,7 @@
 
         <TextView
             android:id="@+id/transaction_fragment_textview_listitem1_date"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="16 May 2020"
@@ -30,8 +31,25 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/transaction_fragment_textview_listitem1_points"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transaction_fragment_textview_listitem1_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/transaction_fragment_textview_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Voucher Code - 2238268362362833263823236"
+            android:textColor="@color/colorAccentOpp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/transaction_fragment_textview_listitem1_points"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_fragment_textview_listitem1_date"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView

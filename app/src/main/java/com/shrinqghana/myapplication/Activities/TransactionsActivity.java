@@ -120,13 +120,14 @@ public class TransactionsActivity extends AppCompatActivity implements View.OnCl
 
 
         public class TransactionViewHolder extends RecyclerView.ViewHolder {
-            private TextView m_merchant_name_textview, m_date_textview, m_amount_textview;
+            private TextView m_merchant_name_textview, m_date_textview, m_amount_textview, m_code_textview;
 
             public TransactionViewHolder(View v) {
                 super(v);
                 m_merchant_name_textview = v.findViewById(R.id.transaction_fragment_textview_listitem1_title);
                 m_date_textview = v.findViewById(R.id.transaction_fragment_textview_listitem1_date);
                 m_amount_textview = v.findViewById(R.id.transaction_fragment_textview_listitem1_points);
+                m_code_textview = v.findViewById(R.id.transaction_fragment_textview_code);
 
             }
         }
@@ -134,10 +135,19 @@ public class TransactionsActivity extends AppCompatActivity implements View.OnCl
         @Override
         public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
 
-            ((TransactionViewHolder) holder).m_merchant_name_textview.setText(TransactionsDataGenerator.getAllData().get(position).getMerchant_name());
             ((TransactionViewHolder) holder).m_date_textview.setText(TransactionsDataGenerator.getAllData().get(position).getTransaction_date());
-            ((TransactionViewHolder) holder).m_amount_textview.setText("-" + TransactionsDataGenerator.getAllData().get(position).getTransaction_amt());
-
+            if(TransactionsDataGenerator.getAllData().get(position).getTransaction_type() == 1){
+                ((TransactionViewHolder) holder).m_amount_textview.setTextColor(getResources().getColor(R.color.colorGreenTransctionPoint, null));
+                ((TransactionViewHolder) holder).m_merchant_name_textview.setText("Airtime Top Up");
+                ((TransactionViewHolder) holder).m_amount_textview.setText("+" + TransactionsDataGenerator.getAllData().get(position).getTransaction_amt());
+                ((TransactionViewHolder) holder).m_code_textview.setVisibility(View.GONE);
+            } else {
+                ((TransactionViewHolder) holder).m_amount_textview.setTextColor(getResources().getColor(R.color.colorRedTransctionPoint, null));
+                ((TransactionViewHolder) holder).m_merchant_name_textview.setText(TransactionsDataGenerator.getAllData().get(position).getMerchant_name());
+                ((TransactionViewHolder) holder).m_amount_textview.setText("-" + TransactionsDataGenerator.getAllData().get(position).getTransaction_amt());
+                ((TransactionViewHolder) holder).m_code_textview.setText("Voucher Code - " + TransactionsDataGenerator.getAllData().get(position).getCode());
+                ((TransactionViewHolder) holder).m_code_textview.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -192,6 +202,8 @@ public class TransactionsActivity extends AppCompatActivity implements View.OnCl
                                                     mine1.setMerchant_name(k.getString("merchant_fullname"));
                                                     mine1.setTransaction_date(k.getString("created_at"));
                                                     mine1.setTransaction_amt(k.getInt("redeemed_points"));
+                                                    mine1.setTransaction_type(k.getInt("is_not_a_redemption"));
+                                                    mine1.setCode(k.getString("redemption_code"));
                                                     TransactionsDataGenerator.addOneData(mine1);
 
                                                     new Handler(Looper.getMainLooper()).post(new Runnable() {

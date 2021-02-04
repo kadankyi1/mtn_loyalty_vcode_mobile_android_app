@@ -8,6 +8,8 @@ public class TransactionModel {
     private String merchant_name;
     private String transaction_date;
     private int transaction_amt;
+    private int transaction_type;
+    private String code;
 
 
 
@@ -50,5 +52,21 @@ public class TransactionModel {
 
     public void setTransaction_amt(int transaction_amt) {
         this.transaction_amt = transaction_amt;
+    }
+
+    public int getTransaction_type() {
+        return transaction_type;
+    }
+
+    public void setTransaction_type(int transaction_type) {
+        this.transaction_type = transaction_type;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
