@@ -24,7 +24,7 @@ Available soon on the MTN App .
       <img width="360" src="2.jpg"/>
     </td>
     <td> 
-     <img width="360" src="3.png"/>
+     <img width="360" src="3.jpg"/>
     </td>
   </table>
   </div>
@@ -55,7 +55,7 @@ Available soon on the MTN App .
      <img width="360" src="8.jpg"/>
     </td>
      <td> 
-      <img width="360" src="9.png"/>
+      <img width="360" src="9.jpg"/>
      </td>
   </tr>
 </table>
