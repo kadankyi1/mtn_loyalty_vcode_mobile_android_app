@@ -1,5 +1,5 @@
 # MOBILE CUSTOMER LOYALTY - VCODE
-**Rewarding MTN Telecom Customers for their loyalty**
+**Rewarding MTN Telecom customers for their loyalty**
 
 ## Features
 * Get A VCODE to identify your loyalty account
