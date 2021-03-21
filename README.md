@@ -65,13 +65,13 @@ Available soon on the MTN App .
 <div align="center">
   <table align="center" border="0" >
   <tr>
-     <img width="500" src="10.png"/>
+     <img width="1000" src="10.png"/>
   </tr>
   <tr>
-     <img width="500" src="11.png"/>
+     <img width="1000" src="11.png"/>
   </tr>
   <tr>
-     <img width="1500" src="12.png"/>
+     <img width="1000" src="12.png"/>
   </tr>
 </table>
   </div>
