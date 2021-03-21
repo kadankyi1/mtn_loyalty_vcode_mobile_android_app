@@ -62,6 +62,20 @@ Available soon on the MTN App .
   </div>
 </br>
 
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+     <img width="1000" src="10.jpg"/>
+  </tr>
+  <tr>
+     <img width="1000" src="11.jpg"/>
+  </tr>
+  <tr>
+     <img width="1000" src="12.jpg"/>
+  </tr>
+</table>
+  </div>
+</br>
 ## Authors
 
 * **Dankyi Anno Kwaku** - *ShrinQ Company Limited*
