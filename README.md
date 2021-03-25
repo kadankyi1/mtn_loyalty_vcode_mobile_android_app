@@ -76,8 +76,9 @@ Available soon on the MTN App .
 </table>
   </div>
 </br>
-## Authors
 
-* **Dankyi Anno Kwaku** - *ShrinQ Company Limited*
+### Author
+
+* **Dankyi Anno Kwaku**
 
 
